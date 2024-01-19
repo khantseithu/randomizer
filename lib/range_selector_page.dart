@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/range_selector_form.dart';
+
+typedef IntValueSetter = void Function(int value);
 
 class RangeSelectorPage extends StatefulWidget {
   const RangeSelectorPage({super.key});
@@ -35,27 +38,10 @@ class _RangeSelectorPageState extends State<RangeSelectorPage> {
         )),
         backgroundColor: Colors.blue,
       ),
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RangeSelectorTextFormField(
-                labelText: "Minimum Value",
-                onSave: (value) => _min = value,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              RangeSelectorTextFormField(
-                labelText: "Maximum Number",
-                onSave: (value) => _max = value,
-              )
-            ],
-          ),
-        ),
+      body: RangeSelectorForm(
+        formKey: _formKey,
+        minValueSetter: (value) => _min = value,
+        maxValueSetter: (value) => _max = value,
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.arrow_forward),
