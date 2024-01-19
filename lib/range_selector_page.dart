@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/randomizer_page.dart';
 import 'package:myapp/range_selector_form.dart';
 
 typedef IntValueSetter = void Function(int value);
@@ -20,7 +21,10 @@ class _RangeSelectorPageState extends State<RangeSelectorPage> {
       // Validation passed, save the values and navigate
       _formKey.currentState?.save();
       // TODO: Navigate to generate number page or perform any other action
-      print('Min: $_min, Max: $_max');
+      Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (context) => RandomizerPage(min: _min, max: _max)),
+      );
     }
   }
 
